@@ -7,6 +7,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.float :carb
       t.float :fat
       t.float :energy
+
+      t.timestamps
     end
   end
 end

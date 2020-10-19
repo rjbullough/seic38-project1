@@ -9,6 +9,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :activity_level
       t.string :goal
       t.float :target_intake
+
+      t.timestamps
     end
   end
 end
