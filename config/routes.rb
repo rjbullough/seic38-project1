@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   delete '/login' => 'session#destroy'
 
   get '/today' => 'pages#today'
+  get '/add-entry' => 'pages#create'
 
   root to: "pages#home"
 

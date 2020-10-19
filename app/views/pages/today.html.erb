@@ -1,4 +1,5 @@
 <h2><%= Time.now.strftime("%B %e, %Y") %></h2>
+<%= link_to 'Add', add_entry_path %>
   <%= pie_chart ({ Intake: @user.entries.todays_entries.map(&:energy).sum,
                    Remaining: @user.target_intake - @user.entries.todays_entries.map(&:energy).sum }),
                    colors: ["#FFF0EC","#FFD2C6"],
