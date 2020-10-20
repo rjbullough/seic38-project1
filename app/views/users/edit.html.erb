@@ -1,0 +1,6 @@
+<h1 class="title is-1">Edit your details</h1>
+<% if flash[:message].present? %>
+  <h3 class="has-text-success"><%= flash[:message] %></h3>  
+<% end %>
+  
+<%= render partial: 'form' %>

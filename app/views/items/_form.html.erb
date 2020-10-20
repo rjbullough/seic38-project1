@@ -1,0 +1,43 @@
+<%= form_for @item do |f| %>
+  <div class="field">
+    <%= f.label :name, class: "label"%>
+    <div class="control">
+      <%= f.text_field :name, required: true, autofocus: true, class: "input is-rounded" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :protein, class: "label" %>
+    <div class="control">
+      <%= f.number_field :protein, required: true, class: "input is-rounded" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :carb, "Carbohydrate", class: "label" %>
+    <div class="control">
+      <%= f.text_field :carb, required: true, class: "input is-rounded" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :fat, class: "label" %>
+    <div class="control">
+      <%= f.number_field :fat, required: true, class: "input is-rounded" %>
+    </div>
+  </div>
+  
+  <div class="field">
+    <%= f.label :energy, class: "label" %>
+    <div class="control">
+      <%= f.number_field :energy, required: true, class: "input is-rounded" %>
+    </div>
+  </div>
+  
+  <div class="field">
+    <div class="control">
+      <%= f.submit class: "button is-link is-rounded" %>
+    </div>
+  </div>
+  
+<% end %>

@@ -1,0 +1,64 @@
+<%= form_for @user do |f| %>
+  <div class="field">
+    <%= f.label :name, class: "label"%>
+    <div class="control">
+      <%= f.text_field :name, required: true, autofocus: true, class: "input is-rounded" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, class: "label" %>
+    <div class="control">
+      <%= f.email_field :email, required: true, class: "input is-rounded" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender, class: "label" %>
+    <div class="control">
+      <%= f.text_field :gender, class: "input is-rounded" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :height, class: "label" %>
+    <div class="control">
+      <%= f.number_field :height, class: "input is-rounded" %>
+    </div>
+  </div>
+  
+  <div class="field">
+    <%= f.label :weight, class: "label" %>
+    <div class="control">
+      <%= f.number_field :weight, class: "input is-rounded" %>
+    </div>
+  </div>
+  
+  <div class="field">
+    <%= f.label :activity_level, "Activity Level", class: "label" %>
+    <div class="control select is-fullwidth is-rounded">
+      <%= f.select :activity_level, [ 'Sedentry', 'Semi-Active', 'Active', 'Very-Active' ], {}, class: "select is-fullwidth" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :goal, class: "label" %>
+    <div class="control select is-fullwidth is-rounded">
+      <%= f.select :goal, [ 'Gain', 'Lose', 'Maintain' ] %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :target_intake, "Target Intake", class: "label" %>
+    <div class="control">
+      <%= f.text_field :target_intake, class: "input is-rounded" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.submit class: "button is-link is-rounded" %>
+    </div>
+  </div>
+  
+<% end %>

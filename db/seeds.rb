@@ -1,7 +1,7 @@
 activity = %w(very-active active semi-active sedentry)
 goal = %w(gain lose maintain)
 User.destroy_all
-20.times do
+5.times do
   User.create({
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -17,16 +17,16 @@ User.destroy_all
 puts "#{User.count} Users created"
 
 Entry.destroy_all
-500.times do |entry|
+30.times do |entry|
   entry = Entry.create({
-    date: Faker::Date.between(from: 7.days.ago, to: Date.today)
+    date: Faker::Date.between(from: 1.days.ago, to: Date.today)
   })
   User.all.sample.entries << entry
 end
 puts "#{Entry.count} Entries created"
 
 Item.destroy_all
-400.times do |item|
+50.times do |item|
   item = Item.create({
     name: Faker::Food.dish,
     protein: rand(1..100),

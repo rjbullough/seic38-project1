@@ -25,6 +25,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'chartkick'
+gem "bulma-rails", "~> 0.9.0"
+gem "font-awesome-rails"
+gem "jquery-rails"
+gem "jquery-ui-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,15 +1,27 @@
-<h1>Sign In</h1>
+<h1 class="title is-1">Sign In</h1>
 
 <% if flash[:error].present? %>
   <h2><%= flash[:error] %></h2>
 <% end %>
 
 <%= form_tag login_path do %>
-  <%= label_tag :email %>
-  <%= email_field_tag :email %>
+  <div class="field">
+    <p class="control has-icons-left">
+      <%= email_field_tag :email, nil, class: "input is-primary is-rounded is-large", placeholder: "Email" %>
+      <span class="icon is-small is-left">
+        <%= fa_icon "envelope" %>
+      </span>
+    </p>
+  </div>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
+  <div class="field">
+    <p class="control has-icons-left">
+      <%= password_field_tag :password, nil, class: "input is-primary is-rounded is-large", placeholder: "Password" %>
+      <span class="icon is-small is-left">
+        <%= fa_icon "lock" %>
+      </span>
+    </p>
+  </div>
 
-  <%= submit_tag "Sign in" %>
+  <%= submit_tag "Sign in", class: "button is-primary is-rounded is-large" %>
 <% end %>

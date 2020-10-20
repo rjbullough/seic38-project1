@@ -7,9 +7,6 @@
   font-family: "Roboto Condensed", sans-serif;
   text-decoration: none;
 }
-h2 {
-  font-size: 50px;
-}
 .content {
   max-width: 1440px;
   margin: 0 auto;
@@ -29,4 +26,14 @@ h2 {
 .login-out {
   color: #fd5f7e;
   font-size: 60px;
+}
+#pHandle,
+#fHandle,
+#cHandle {
+  width: 3em;
+  height: 2em;
+  top: 50%;
+  margin-top: -1em;
+  text-align: center;
+  line-height: 2em;
 }

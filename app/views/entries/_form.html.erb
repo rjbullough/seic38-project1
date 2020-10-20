@@ -1,0 +1,9 @@
+<%=  form_for @item do |f| %>
+  <%= f.label :protein %>
+  <%= f.range_field :protein, min: 0, max: 200, class: "slide"%>
+  <%= f.label :carb %>
+  <%= f.range_field :carb, min: 0, max: 300, class: "slide"%>
+  <%= f.label :fat %>
+  <%= f.range_field :fat, min: 0, max: 200, class: "slide"%>
+  <%= f.submit "add", class: "button is-primary is-large"%>
+<% end %>
