@@ -1,136 +1,40 @@
 <h1 class="title is-1">New Entry</h1>
 
-<%= form_for @item, remote: true do |f| %>
-  <h3 class="title is-4">Protein</h3>
-  <div id="protein" class="block"> <div id="pHandle" class="ui-slider-handle"></div> </div>
+<%= form_for @entry, id: "new-entry" do |f| %>
+  <%= f.hidden_field :user_id, value: @current_user.id %>
+  <%= f.hidden_field :date, value: Date.today.strftime("%Y-%m-%d") %>
 
-  <h3 class="title is-4">Carbohydrate</h3>
-  <div id="carb" class="block"> <div id="cHandle" class="ui-slider-handle"></div> </div>
+  <%= fields_for :items, @entry.items.build do |i| %>
+    <%= i.range_field :protein,
+                      min: 0,
+                      max: 200,
+                      id: "protein-slider"%>
+    <%= i.range_field :carb,
+                      min: 0,
+                      max: 200,
+                      class: "slide",
+                      id: "carb-slider"%>
+    <%= i.range_field :fat,
+                      min: 0,
+                      max: 200,
+                      class: "slide",
+                      id: "fat-slider"%>
 
-  <h3 class="title is-4">Fat</h3>
-  <div id="fat" class="block"> <div id="fHandle" class="ui-slider-handle"></div> </div>
+    <div class="field has-addons">
 
-  <%= f.hidden_field :protein %>
-  <%= f.hidden_field :carb %>
-  <%= f.hidden_field :fat %>
-  <%= f.hidden_field :entry_id, value: "#{@entry.id}"  %>
+      <div class="control is-expanded">
+        <%= i.text_field :name, class: "input is-info is-large",placeholder: "name" %>
+      </div>
+
+      <div class="control">
+        <%= f.submit "add", id: "new-item-submit", class: "button is-large is-info" %>
+      </div>
+
+    </div>
+
+  <% end %>
 
   <br>
 
-  <div class="field has-addons">
-
-    <div class="control is-expanded">
-      <%= f.text_field :name, class: "input is-primary is-large",placeholder: "name" %>
-    </div>
-
-    <div class="control">
-      <%= f.submit "add", class: "button is-large is-primary" %>
-    </div>
-
-  </div>
 <% end %>
 
-<div class="tile is-ancestor">
-  <div class="tile is-vertical is-parent is-vertical">
-    <% @entry.items.each do |item| %>
-      <div class="tile is-child notification is-light">
-        <p class="title"><%= item.name %></p>
-        <p class="subtitle"><%= item.energy %> Kcal</p>
-        <div class="subtitle is-6">
-          <%= item.protein %> P | <%= item.carb %> C | <%= item.fat %> F
-        </div>
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <a class="level-item" aria-label="delete">
-              <span class="icon is-small">
-                <%= fa_icon "trash" %>
-              </span>
-            </a>
-          </div>
-        </nav>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-
-
-
-<script>
-$( function () {
-  const pHandle = $( "#pHandle" )
-  const cHandle = $( "#cHandle" )
-  const fHandle = $( "#fHandle" )
-
-  const protein = $( "#protein" ).slider( {
-        min: 1,
-        max: 300,
-        value: 1,
-        create: function() {
-          pHandle.text( $( this ).slider( "value" ) );
-        },
-        slide: function( event, ui ) {
-          pHandle.text( ui.value );
-          $("#item_protein").val( ui.value );
-        }
-  });
-
-  const carb = $( "#carb" ).slider( {
-        min: 1,
-        max: 300,
-        value: 1,
-        create: function() {
-          cHandle.text( $( this ).slider( "value" ) );
-        },
-        slide: function( event, ui ) {
-          cHandle.text( ui.value );
-          $( "#item_carb" ).val( ui.value );
-        }
-  });
-
-  const fat = $( "#fat" ).slider({
-        min: 1,
-        max: 200,
-        value: 1,
-        create: function() {
-          fHandle.text( $( this ).slider( "value" ) );
-        },
-        slide: function( event, ui ) {
-          fHandle.text( ui.value );
-          $( "#item_fat" ).val( ui.value );
-        }
-  });
-
-  $( "#item_protein").val( slider.slider( "value" ) );
-  $( "#item_carb" ).val( slider.slider( "value" ) );
-  $( "#item_fat" ).val( slider.slider( "value" ) );
-
-    const itemID = $('#order').data("order-id");
-    const shippButton = $( '#ship' );
-
-    var closeButton = $('#close');
-    alert(orderId);
-
-    shippButton.on("click", function() {
-        $.ajax({
-            url: '/orders/'+orderId,
-            type: 'PATCH',
-            dataType: 'json',
-            data: {"order": { "status": "3"}},
-            complete: function (jqXHR, textStatus) {
-                // callback
-            },  
-            success: function (data, textStatus, jqXHR) {
-                // inform user that it was a sucess like:
-                alert("successfully changed the order to shipped");
-            },  
-            error: function (jqXHR, textStatus, errorThrown) {
-                // do something if the request fails
-            }   
-        }); 
-    });
-});
-$( function() {
-    
-  } );
-</script>
