@@ -29,6 +29,7 @@ gem 'bulma-extensions-rails'
 gem "font-awesome-rails"
 gem "jquery-rails"
 gem 'jquery-ui-rails'
+gem 'gon'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

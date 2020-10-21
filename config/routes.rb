@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   delete '/login' => 'session#destroy'
 
 
-  get '/today' => "pages#show"
+  get '/today' => 'pages#show'
+  get '/today/update' => 'pages#update'
+  post '/today' => 'pages#create'
 
   resources :entries
-  resources :items do
-    get 'search', on: :collection
-  end
+  resources :items 
   resources :users, only: [:new, :create, :edit, :update]
 end

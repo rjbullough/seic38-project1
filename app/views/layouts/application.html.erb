@@ -16,7 +16,7 @@
         <div class="navbar-item">
           <div class="buttons">
             <% if @current_user.present? %> 
-              <%= link_to 'Home', today_path, class: "button is-primary" %> 
+              <%= link_to 'Home', today_path, class: "button is-warning" %> 
               <%= link_to 'Add', new_entry_path, class: "button is-link" %>
 
               <%= link_to 'Settings', edit_user_path(@current_user), class: "button is-light" %> 

@@ -16,5 +16,4 @@
 //= require chartkick
 //= require bulma-extensions
 //= require highcharts
-//= require numerous
 //= require_tree .

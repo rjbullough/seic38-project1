@@ -1,7 +1,7 @@
-<h1>Sign Up Page</h1>
+<h1 class="title is-1">Sign Up</h1>
 
 <% if @user.errors.any? %>
-  <ol>
+  <ol class="notification is-danger">
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
@@ -9,11 +9,31 @@
 <% end %>
 
 <%= form_for @user do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.text_field :password_confirmation %>
-  <%= f.submit "Sign up!"%>
+  <div class="field">
+    <p class="control has-icons-left">
+      <%= f.email_field :email, class: "input is-warning is-rounded is-large", placeholder: "Email" %>
+      <span class="icon is-small is-left">
+        <%= fa_icon "envelope" %>
+      </span>
+    </p>
+  </div>  
+
+  <div class="field">
+    <p class="control has-icons-left">
+      <%= f.password_field :password, class: "input is-warning is-rounded is-large", placeholder: "Password" %>
+      <span class="icon is-small is-left">
+        <%= fa_icon "lock" %>
+      </span>
+    </p>
+  </div>
+
+  <div class="field">
+    <p class="control has-icons-left">
+      <%= f.password_field :password_confirmation, class: "input is-warning is-rounded is-large", placeholder: "Confirm Password" %>
+      <span class="icon is-small is-left">
+        <%= fa_icon "lock" %>
+      </span>
+    </p>
+  </div>    
+  <%= f.submit "Sign up!", class: "button is-warning is-rounded is-large"%>
 <% end %>

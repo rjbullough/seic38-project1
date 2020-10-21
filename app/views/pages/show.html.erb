@@ -1,16 +1,24 @@
-<%= render partial: 'entries' %>
+<div id="anything">
+
+	<%= render partial: 'update' %>
+
+</div>
 
 <script>
 // Initialize all input of date type.
-const calendars = bulmaExtensions.bulmaCalendar.attach('[type="date"]');
+	let calendars = bulmaExtensions.bulmaCalendar.attach('[type="date"]');
 
-// Loop on each calendar initialized
-calendars.forEach(calendar => {
-	// Add listener to date:selected event
-	calendar.on('date:selected', date => {
-		console.log(date);
+	// Loop on each calendar initialized
+	calendars.forEach(calendar => {
+		// Add listener to date:selected event
+		calendar.on('date:selected', date => {
+			$('#date_value').val(date.start)
+			$.get("/today/update", {date: date.start}).done(function (response) {
+				$("#anything").html(response)
+				console.log(response)
+			})
+		});
 	});
-});
 
 // To access to bulmaCalendar instance of an element
 const element = document.querySelector('#my-element');
@@ -20,9 +28,7 @@ if (element) {
 		console.log(datepicker.data.value());
 	});
 }
-// $( function() {
-//     $( "#date-picker" ).datepicker();
-//   } );
+
 </script>  
 
   

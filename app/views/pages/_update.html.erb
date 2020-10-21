@@ -1,13 +1,29 @@
+<h1 class="title is-1">Hi <%= @current_user.name.split.first %>! It's <%= Time.now.strftime("%B %e, %Y") %></h1>
+<div class="field has-addons">
+  <div class="control">
+    <%= hidden_field_tag :date_value %>
+    <input id="date-picker" class="input" type="date" placeholder="Search another day?">
+  </div>
 
-  <%= pie_chart ({ Intake: @user.entries.todays_entries.map(&:energy).sum,
-                   Remaining: @user.target_intake - @user.entries.todays_entries.map(&:energy).sum }),
+  <div class="control">
+    <%= link_to today_path, remote: true, id: "calendar-button", class: "button is-link" do %>
+      <span class="icon is-small is-left">
+        <%= fa_icon "calendar" %>
+      </span>
+    <% end %>
+      
+  </div>
+</div>
+
+<%= pie_chart ({ Intake: @user.entries.specific_entries(@date).map(&:energy).sum,
+                   Remaining: @user.target_intake - @user.entries.specific_entries(@date).map(&:energy).sum }),
                    colors: ["#48C774","#DDF5E5"],
                    height: "500px",
                    library: {fontSize: "30px"}
                   %>
-  <%= pie_chart ({ Protein: @user.entries.todays_entries.map(&:protein).sum,
-                   Carbohydrate: @user.entries.todays_entries.map(&:carb).sum, 
-                   Fat: @user.entries.todays_entries.map(&:fat).sum }),
+  <%= pie_chart ({ Protein: @user.entries.specific_entries(@date).map(&:protein).sum,
+                   Carbohydrate: @user.entries.specific_entries(@date).map(&:carb).sum, 
+                   Fat: @user.entries.specific_entries(@date).map(&:fat).sum }),
                    colors: ["#34B5E1", "#FFDD57", "#FD5F7E"],
                    donut: true %>
 
