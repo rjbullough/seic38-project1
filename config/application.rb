@@ -19,6 +19,7 @@ Bundler.require(*Rails.groups)
 
 module NutritionApp
   class Application < Rails::Application
+    config.assets.paths << Rails.root.join('node_modules')
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
@@ -29,6 +30,5 @@ module NutritionApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-    config.assets.paths << Rails.root.join('node_modules')
   end
 end

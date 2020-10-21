@@ -7,6 +7,11 @@ class Entry < ApplicationRecord
   scope :todays_entries, -> { where(date: Date.today)
                               .map { |entry| entry.items }
                               .flatten }
+          
+  scope :specific_entries, -> (date) { where("(date) = ?", date)
+                              .map { |entry| entry.items }
+                              .flatten }
+          
   
 end
 # 

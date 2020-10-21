@@ -29,7 +29,6 @@ class ItemsController < ApplicationController
     redirect_to today_path
   end
 
-
   private
   def item_params
     params.require(:item).permit(:id, :name, :protein, :carb, :fat, :entry_id, :energy)

@@ -1,18 +1,18 @@
 {
   "name": "nutrition-app",
-  "private": true,
-  "dependencies": {
-    "bulma-extensions": "^6.2.7"
-  },
-  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "application.js",
   "directories": {
     "lib": "lib"
   },
+  "dependencies": {
+    "bulma-extensions": "^6.2.7"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Ryan Bullough",
   "license": "ISC"
 }

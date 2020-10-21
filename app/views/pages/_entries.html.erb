@@ -1,0 +1,15 @@
+<h1 class="title is-1">Hi <%= @current_user.name.split.first %>! It's <%= Time.now.strftime("%B %e, %Y") %></h1>
+<div class="field has-addons">
+  <div class="control">
+    <input id="date-picker" class="input" type="date" placeholder="Search another day?">
+  </div>
+  <div class="control">
+    <a class="button is-link">
+      <span class="icon is-small is-left">
+        <%= fa_icon "calendar" %>
+      </span>
+    </a>
+  </div>
+</div>
+
+<%= render partial: 'data' %>

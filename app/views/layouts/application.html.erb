@@ -6,8 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
@@ -17,6 +17,8 @@
           <div class="buttons">
             <% if @current_user.present? %> 
               <%= link_to 'Home', today_path, class: "button is-primary" %> 
+              <%= link_to 'Add', new_entry_path, class: "button is-link" %>
+
               <%= link_to 'Settings', edit_user_path(@current_user), class: "button is-light" %> 
               <%= link_to "Log Out", login_path, method: 'delete', class: "button is-light" %>
             <% end %>

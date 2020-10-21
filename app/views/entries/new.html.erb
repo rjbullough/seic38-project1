@@ -1,10 +1,10 @@
 <h1 class="title is-1">New Entry</h1>
 
 <%= render partial: 'form' %>
-
-
 <script>
-$( document).ready(function() {
+
+$(document).ready(function() {
+   Numerous.init();
   $("#fat-slider").mousemove(function() {
     $("#fat-output").text($('#fat-slider').val())
   })
@@ -16,5 +16,6 @@ $( document).ready(function() {
   $("#carb-slider").mousemove(function() {
     $("#carb-output").text($('#carb-slider').val())
   })
+
 })
 </script>

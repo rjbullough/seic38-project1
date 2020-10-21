@@ -1,0 +1,57 @@
+
+  <%= pie_chart ({ Intake: @user.entries.todays_entries.map(&:energy).sum,
+                   Remaining: @user.target_intake - @user.entries.todays_entries.map(&:energy).sum }),
+                   colors: ["#48C774","#DDF5E5"],
+                   height: "500px",
+                   library: {fontSize: "30px"}
+                  %>
+  <%= pie_chart ({ Protein: @user.entries.todays_entries.map(&:protein).sum,
+                   Carbohydrate: @user.entries.todays_entries.map(&:carb).sum, 
+                   Fat: @user.entries.todays_entries.map(&:fat).sum }),
+                   colors: ["#34B5E1", "#FFDD57", "#FD5F7E"],
+                   donut: true %>
+
+<br>
+<br>
+
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-parent is-vertical">
+    <% @user.entries.todays_entries.each do |entry| %>
+
+      <div class="tile is-child notification is-light">
+
+        <p class="title"><%= entry.name %></p>
+        <p class="subtitle"><%= entry.energy %> Kcal</p>
+
+        <div class="subtitle is-6">
+          <%= entry.protein %> P | <%= entry.carb %> C | <%= entry.fat %> F
+        </div>
+
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <%= link_to edit_item_path(entry.id),
+                        class: "level-item",
+                        "aria-label": "edit" do %>
+
+              <span class="icon is-small">
+                <%= fa_icon "edit" %>
+              </span>
+
+            <% end %>
+
+            <%= link_to item_path(entry.id), 
+                        method: "delete",
+                        class: "level-item",
+                        "aria-label": "delete" do %>
+
+              <span class="icon is-small">
+                <%= fa_icon "trash" %>
+              </span>
+              
+            <% end %>
+          </div>
+        </nav>
+      </div>
+    <% end %>
+  </div>
+</div>
