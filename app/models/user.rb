@@ -3,6 +3,5 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   has_many :entries
   has_many :items, through: :entries
-
   
 end

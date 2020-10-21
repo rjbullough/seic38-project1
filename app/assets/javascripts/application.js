@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require jquery3
-//= require jquery-ui
 //= require chartkick
+//= require bulma-extensions
 //= require highcharts
 //= require_tree .

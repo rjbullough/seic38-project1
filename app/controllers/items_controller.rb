@@ -2,10 +2,15 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
+    @entry = Entry.new
   end
 
   def create
-    @item = Item.create item_params
+    @entry = Entry.create entry_params
+    @item = @entry.items.create item_params
+    if @entry.save
+      redirect_to edit_item_path(@item)
+    end
   end
 
   def update
@@ -27,7 +32,10 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:id, :name, :protein, :carb, :fat, :entry_id)
+    params.require(:item).permit(:id, :name, :protein, :carb, :fat, :entry_id, :energy)
+  end
+  def entry_params
+    params.require(:entry).permit(:user_id, :date, :items => [])
   end
 
 end

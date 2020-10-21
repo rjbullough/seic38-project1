@@ -1,40 +1,20 @@
 <h1 class="title is-1">New Entry</h1>
 
-<%= form_for @entry, id: "new-entry" do |f| %>
-  <%= f.hidden_field :user_id, value: @current_user.id %>
-  <%= f.hidden_field :date, value: Date.today.strftime("%Y-%m-%d") %>
+<%= render partial: 'form' %>
 
-  <%= fields_for :items, @entry.items.build do |i| %>
-    <%= i.range_field :protein,
-                      min: 0,
-                      max: 200,
-                      id: "protein-slider"%>
-    <%= i.range_field :carb,
-                      min: 0,
-                      max: 200,
-                      class: "slide",
-                      id: "carb-slider"%>
-    <%= i.range_field :fat,
-                      min: 0,
-                      max: 200,
-                      class: "slide",
-                      id: "fat-slider"%>
 
-    <div class="field has-addons">
+<script>
+$( document).ready(function() {
+  $("#fat-slider").mousemove(function() {
+    $("#fat-output").text($('#fat-slider').val())
+  })
 
-      <div class="control is-expanded">
-        <%= i.text_field :name, class: "input is-info is-large",placeholder: "name" %>
-      </div>
+  $("#protein-slider").mousemove(function() {
+    $("#protein-output").text($('#protein-slider').val())
+  })
 
-      <div class="control">
-        <%= f.submit "add", id: "new-item-submit", class: "button is-large is-info" %>
-      </div>
-
-    </div>
-
-  <% end %>
-
-  <br>
-
-<% end %>
-
+  $("#carb-slider").mousemove(function() {
+    $("#carb-output").text($('#carb-slider').val())
+  })
+})
+</script>

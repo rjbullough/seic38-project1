@@ -28,7 +28,7 @@ gem 'chartkick'
 gem "bulma-rails", "~> 0.9.0"
 gem "font-awesome-rails"
 gem "jquery-rails"
-gem "jquery-ui-rails"
+gem 'bulma-extensions-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

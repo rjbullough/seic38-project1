@@ -1,9 +1,50 @@
-<%=  form_for @item do |f| %>
-  <%= f.label :protein %>
-  <%= f.range_field :protein, min: 0, max: 200, class: "slide"%>
-  <%= f.label :carb %>
-  <%= f.range_field :carb, min: 0, max: 300, class: "slide"%>
-  <%= f.label :fat %>
-  <%= f.range_field :fat, min: 0, max: 200, class: "slide"%>
-  <%= f.submit "add", class: "button is-primary is-large"%>
+<%= form_for @entry, id: "new-entry" do |f| %>
+  <%= f.hidden_field :user_id, value: @current_user.id %>
+  <%= f.hidden_field :date, value: Date.today.strftime("%Y-%m-%d") %>
+
+  <%= fields_for :items, @entry.items do |i| %>
+  <fieldset>
+    <%= i.label :protein, class: "label" %>
+    <%= i.range_field :protein,
+                      value: 1,
+                      min: 0,
+                      max: 200,
+                      id: "protein-slider",
+                      class: "slider is-fullwidth is-info is-large has-output"%>
+    <output for="protein-slider" id="protein-output">1</output>  
+                 
+    <%= i.label :carb, class: "label" %>
+    <%= i.range_field :carb,
+                      value: 1,
+                      min: 0,
+                      max: 200,
+                      id: "carb-slider",
+                      class: "slider is-fullwidth is-success is-large has-output"%>
+    <output for="carb-slider" id="carb-output">1</output>   
+
+    <%= i.label :fat, class: "label" %>
+    <%= i.range_field :fat,
+                      value: 1,
+                      min: 0,
+                      max: 200,
+                      id: "fat-slider",
+                      class: "slider is-fullwidth is-warning is-large has-output"%>
+    <output for="fat-slider" id="fat-output">1</output>               
+
+    <div class="field has-addons">
+
+      <div class="control is-expanded">
+        <%= i.text_field :name, class: "input is-info is-large",placeholder: "name" %>
+      </div>
+
+
+  <% end %>
+      <div class="control">
+        <%= f.submit "add", id: "new-item-submit", class: "button is-large is-info" %>
+      </div>
+
+    </div>
+  </fieldset>
+  <br>
+
 <% end %>
