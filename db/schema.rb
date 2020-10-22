@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_051412) do
+ActiveRecord::Schema.define(version: 2020_10_22_045210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_10_18_051412) do
     t.float "weight"
     t.string "activity_level"
     t.string "goal"
-    t.float "target_intake"
+    t.float "target_intake", default: 2000.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"

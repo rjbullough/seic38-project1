@@ -1,5 +1,11 @@
 <h1 class="title is-1">
-  Hi <%= @current_user.name.split.first %>!
+  
+  <% if @current_user.name.present? %>
+    Hi <%= @current_user.name.split.first %>!
+  <% else %>
+    Hi!
+  <% end %>
+  
 </h1>
 
 <h2 class="subtitle is-3">

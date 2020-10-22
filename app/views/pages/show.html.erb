@@ -29,14 +29,14 @@
 		})
 	})
 
-	$( document ).on( "click", ".delete-item", function ( event ) {
+	$( 'body' ).on( "click", ".delete-item", function ( event ) {
 		const entryDate = $( event.target ).next().val()
 		console.log( entryDate )
 		$.get( "/today/update", { date: entryDate } ).done( function ( response ) {
 				$( "#anything" ).html( response )
 		})
 	})
-	
+
 </script>  
 
   

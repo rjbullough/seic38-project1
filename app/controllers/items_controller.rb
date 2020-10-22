@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :check_for_login
   
   def new
     @item = Item.new
