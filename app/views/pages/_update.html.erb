@@ -1,5 +1,11 @@
 <h1 class="title is-1">
-  Hi <%= @current_user.name.split.first %>!
+  
+  <% if @current_user.name.present? %>
+    Hi <%= @current_user.name.split.first %>!
+  <% else %>
+    Hi!
+  <% end %>
+  
 </h1>
 
 <h2 class="subtitle is-3">
@@ -12,11 +18,11 @@
                    height: "500px",
                    library: {fontSize: "30px"}
                   %>
-  <%= pie_chart ({ Protein: @user.entries.specific_entries(@date).map(&:protein).sum,
-                   Carbohydrate: @user.entries.specific_entries(@date).map(&:carb).sum, 
-                   Fat: @user.entries.specific_entries(@date).map(&:fat).sum }),
-                   colors: ["#34B5E1", "#FFDD57", "#FD5F7E"],
-                   donut: true %>
+<%= pie_chart ({ Protein: @user.entries.specific_entries(@date).map(&:protein).sum,
+                  Carbohydrate: @user.entries.specific_entries(@date).map(&:carb).sum, 
+                  Fat: @user.entries.specific_entries(@date).map(&:fat).sum }),
+                  colors: ["#34B5E1", "#FFDD57", "#FD5F7E"],
+                  donut: true %>
 
 <br>
 <br>
@@ -48,6 +54,7 @@
 
             <%= link_to item_path(entry.id), 
                         method: "delete",
+                        remote: "true",
                         class: "level-item",
                         "aria-label": "delete" do %>
 

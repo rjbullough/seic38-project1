@@ -1,6 +1,6 @@
 <%= form_for @entry, id: "new-entry" do |f| %>
   <%= f.hidden_field :user_id, value: @current_user.id %>
-  <%= f.hidden_field :date, value: Date.today.strftime("%Y-%m-%d") %>
+  <%= f.hidden_field :date, value: Date.today.strftime( "%Y-%m-%d" ) %>
 
   <%= fields_for :items, @entry.items do |i| %>
   <fieldset>

@@ -1,16 +1,4 @@
-.logo {
-  width: 330px;
-  margin: 128px auto 0 auto;
-  display: block;
-}
-.page-access {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  align-items: center;
-}
 .login-out {
-  color: #fd5f7e;
   font-size: 60px;
   text-decoration: none !important;
 }

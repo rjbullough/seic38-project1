@@ -3,17 +3,17 @@
 <%= render partial: 'form' %>
 <script>
 
-$(document).ready(function() {
-  $("#fat-slider").mousemove(function() {
-    $("#fat-output").text($('#fat-slider').val())
+$( document ).ready( function() {
+  $( "#fat-slider" ).mousemove( function() {
+    $( "#fat-output" ).text($( '#fat-slider' ).val() )
   })
 
-  $("#protein-slider").mousemove(function() {
-    $("#protein-output").text($('#protein-slider').val())
+  $( "#protein-slider" ).mousemove( function() {
+    $( "#protein-output" ).text( $( '#protein-slider' ).val() )
   })
 
-  $("#carb-slider").mousemove(function() {
-    $("#carb-output").text($('#carb-slider').val())
+  $( "#carb-slider" ).mousemove( function() {
+    $( "#carb-output" ).text( $('#carb-slider').val() )
   })
 
 })
