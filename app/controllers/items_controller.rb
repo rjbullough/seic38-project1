@@ -8,9 +8,7 @@ class ItemsController < ApplicationController
   def create
     @entry = Entry.create entry_params
     @item = @entry.items.create item_params
-    if @entry.save
-      redirect_to edit_item_path(@item)
-    end
+
   end
 
   def update
@@ -26,7 +24,6 @@ class ItemsController < ApplicationController
   def destroy
     item = Item.find params[:id]
     item.destroy
-    redirect_to today_path
   end
 
   private

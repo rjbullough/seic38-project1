@@ -8,8 +8,8 @@ class PagesController < ApplicationController
   end
   
   def update
-    @user = User.find_by email: @current_user.email
     @date = Date.parse(params[:date])
+    @user = User.find_by email: @current_user.email
     render :update, :layout => false
   end
 

@@ -9,7 +9,7 @@ class EntriesController < ApplicationController
     @entry = Entry.create entry_params
     @item = @entry.items.create item_params
     if @entry.save
-      redirect_to edit_item_path(@item)
+      redirect_to today_path
     end
   end
 

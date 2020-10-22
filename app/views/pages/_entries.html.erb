@@ -1,19 +1,10 @@
-<h1 class="title is-1">Hi <%= @current_user.name.split.first %>! It's <%= Time.now.strftime("%B %e, %Y") %></h1>
-<div class="field has-addons">
-  <div class="control">
-    <%= hidden_field_tag :date_value %>
-    <input id="date-picker" class="input" type="date" placeholder="Search another day?">
-  </div>
+<h1 class="title is-1">
+  Hi <%= @current_user.name.split.first %>!
+</h1>
 
-  <div class="control">
-    <%= link_to today_path, remote: true, id: "calendar-button", class: "button is-link" do %>
-      <span class="icon is-small is-left">
-        <%= fa_icon "calendar" %>
-      </span>
-    <% end %>
-      
-  </div>
-</div>
+<h2 class="subtitle is-3">
+  You're viewing <%= Date.today.strftime("%A, %e %b") %>
+</h2>
 
 <%= pie_chart ({ Intake: @user.entries.todays_entries.map(&:energy).sum,
                    Remaining: @user.target_intake - @user.entries.todays_entries.map(&:energy).sum }),
@@ -54,14 +45,15 @@
               </span>
 
             <% end %>
-
+            
             <%= link_to item_path(entry.id), 
                         method: "delete",
-                        class: "level-item",
+                        remote: "true",
+                        class: "level-item delete-item",
                         "aria-label": "delete" do %>
-
               <span class="icon is-small">
                 <%= fa_icon "trash" %>
+                <%= hidden_field_tag entry.id,  entry.entry.date  %>
               </span>
               
             <% end %>

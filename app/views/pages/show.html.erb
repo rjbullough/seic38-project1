@@ -1,34 +1,42 @@
+<%= render partial: 'calendar' %>
+
 <div id="anything">
 
-	<%= render partial: 'update' %>
+	<% if params[:date].present? %>
+		<%= render partial: 'update'  %>
+	<% else %>
+		<%= render partial: 'entries' %>
+	<% end %>
 
 </div>
 
 <script>
-// Initialize all input of date type.
-	let calendars = bulmaExtensions.bulmaCalendar.attach('[type="date"]');
 
-	// Loop on each calendar initialized
-	calendars.forEach(calendar => {
-		// Add listener to date:selected event
-		calendar.on('date:selected', date => {
-			$('#date_value').val(date.start)
-			$.get("/today/update", {date: date.start}).done(function (response) {
-				$("#anything").html(response)
-				console.log(response)
-			})
-		});
-	});
+	const $calendar = $( "#datepicker" )
+	const changeViewButton = $("#calendar-button")
 
-// To access to bulmaCalendar instance of an element
-const element = document.querySelector('#my-element');
-if (element) {
-	// bulmaCalendar instance is available as element.bulmaCalendar
-	element.bulmaCalendar.on('select', datepicker => {
-		console.log(datepicker.data.value());
-	});
-}
+	$calendar.change( function () {
+		$( "#date_value" ).val($calendar.val())
+	})
 
+	changeViewButton.click( function () {
+		$.get("/today/update",
+						{ date: $( "#date_value" )
+						.val() } )
+						.done(function (response) {
+							$("#anything").html(response)
+							console.log(response)
+		})
+	})
+
+	$( document ).on( "click", ".delete-item", function ( event ) {
+		const entryDate = $( event.target ).next().val()
+		console.log( entryDate )
+		$.get( "/today/update", { date: entryDate } ).done( function ( response ) {
+				$( "#anything" ).html( response )
+		})
+	})
+	
 </script>  
 
   

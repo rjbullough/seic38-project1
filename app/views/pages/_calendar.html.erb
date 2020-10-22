@@ -1,0 +1,14 @@
+<div class="field has-addons">
+
+  <div class="control">
+    <%= hidden_field_tag :date_value %>
+    <input id="datepicker" class="input" type="date" placeholder="Search another day?">
+  </div>
+
+  <div class="control">
+    <%= link_to today_path, remote: true, id: "calendar-button", class: "button is-link" do %>
+      GO
+    <% end %>
+  </div>
+
+</div>
